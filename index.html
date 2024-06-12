@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+
+        }
+        .invasion{
+            height: 50vh;
+            width:100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:50px;
+
+        }
+        .button{
+
+            height: 20%;
+            width: 10%;
+            border:2px solid black;
+        }
+        #white{
+            background-color: white;
+        }
+        #black{
+            background-color: black;
+        }
+        #yellow{
+            background-color: yellow;
+        }
+        #green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="invasion">
+        <div class="button" id="white"></div>
+        <div class="button" id="black"></div>
+        <div class="button" id="yellow"></div>
+        <div class="button" id="green"></div>
+    </div>
+</body>
+<script>
+    let buttons=document.querySelectorAll(".button")
+    let body=document.querySelector("body")
+    buttons.forEach(function(button){
+        button.addEventListener("click",function(e){
+            if(e.target.id=="white"){
+                body.style.backgroundColor="white";
+            }else if(e.target.id=="yellow"){
+                body.style.backgroundColor="yellow";
+            }else if(e.target.id=="black"){
+                body.style.backgroundColor="black";
+            }else if(e.target.id=="green"){
+                body.style.backgroundColor="green"
+            }
+        })
+    })
+</script>
+</html>
