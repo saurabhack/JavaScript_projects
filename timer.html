@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+
+        .main{
+            height:100vh;
+            width:100vw;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .timeBox{
+            height: 30%;
+            width: 50%;
+            background-color: rgb(217, 192, 174);
+            border:2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="timeBox">
+            <h1 id="time">Time</h1>
+        </div>
+    </div>
+</body>
+<script>
+    let clock=document.querySelector("#time")
+    setInterval(function(){
+        let time=new Date();
+        clock.innerHTML=time.toLocaleTimeString();
+    },1000)
+</script>
+</html>
