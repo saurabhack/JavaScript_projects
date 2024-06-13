@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .action{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: gray;
+        }
+        .addition_form{
+            height: 50%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border:2px solid black;
+            background-color: azure;
+
+        }
+        #heading{
+            position: relative;
+            top:-200px;
+            left:350px;
+            font-size: 25px;
+        }
+        #firstNumber{
+            height: 5vh;
+            width:30vw;
+        }
+        #secondNumber{
+            height: 5vh;
+            width: 30vw;
+        }
+        #button{
+            height: 5vh;
+            width:30vw;
+            background-color:green;
+            color: white;
+        }
+        #operation{
+            height: 5vh;
+            width: 30vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="action">
+        <div id="heading">
+        <h3 style="background-color: white;">Calculator</h3>
+        </div>
+        <div class="addition_form">
+            
+            <form action="" class="addition">
+                <input type="text" id="firstNumber">
+                <br>
+                <br>
+                <input type="text" id="secondNumber">
+                <br>
+                <br>
+                <input type="text" id="operation">
+                <br>
+                <br>
+                <input id="button" type="submit" value="calculate">
+                <br>
+                <br>
+                <br>
+                <p class="ans">ANS:-</p>
+            </form>
+        </div>
+    </div>
+   
+</body>
+<script>
+    let form=document.querySelector(".addition")
+    form.addEventListener("submit",function(e){
+        e.preventDefault()
+        let first=parseInt(document.querySelector("#firstNumber").value);
+        let second=parseInt(document.querySelector("#secondNumber").value);
+        let operation=document.querySelector("#operation").value;
+        let ans=document.querySelector(".ans")
+        if(operation=="+"){
+            let op=first+second;
+            ans.innerHTML=op
+        }else if(operation=="-")
+        {
+            let op=first-second
+            ans.innerHTML=op
+        }else if(operation=="/"){
+            let op=first/second
+            ans.innerHTML=op
+        }else if(operation=="%"){
+            let op=first%second
+            ans.innerHTML=op
+        }else if(operation=="*"){
+            let op=first*second
+            ans.innerHTML=op
+        }
+
+    })
+    </script>
+</html>
