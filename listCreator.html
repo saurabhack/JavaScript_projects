@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+
+        }
+        .main_box{
+            height: 100vh;
+            width:100vw;
+            background-color: black;
+
+        }
+        .content{
+            height: 99%;
+            width:99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #myform{
+            width:50%;
+            height: 10%;
+        }
+        #subject{
+            width: 50%;
+            height: 40%;
+            display: flex;
+        }
+        #button{
+            height: 50%;
+            width: 25%;
+            position: relative;
+            
+            top:-46px;
+            right: -321px;
+            background-color: gray;
+            border:2px solid black;
+            
+        }
+        .addContent{
+            position: relative;
+            bottom: -90px;
+            left:-600px;
+            font-size: 25px;
+            color:white
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main_box">
+        <div class="content">
+            <form id="myform" action="" method="post">
+                <input type="text" id="subject">
+                <br>
+                <input type="submit" value="add" id="button">
+            </form>
+            <br>
+            <br>
+            <ul class="addContent">
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script>
+    let myform=document.querySelector("#myform")
+    myform.addEventListener("submit",function(e){
+        e.preventDefault();
+        let subject=document.querySelector("#subject").value;
+        console.log(subject)
+        let li=document.createElement("li")
+        let ans=document.querySelector(".addContent")
+        li.innerText=subject;
+        ans.appendChild(li)
+
+    });
+</script>
+</html>
