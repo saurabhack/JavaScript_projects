@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #main {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(107, 107, 103);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            height: 50%;
+            width: 50%;
+            background-color: rgb(72, 52, 52);
+            color: white;
+            border: 2px solid blue;
+            box-shadow: 2px 6px black;
+        }
+
+        #user {
+            height: 25px;
+            width: 50%;
+            position: relative;
+            left: 150px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #button {
+            height: 30px;
+            width: 50%;
+            position: relative;
+            left: 150px;
+            background-color: rgb(167, 164, 160);
+        }
+
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="calculator">
+            <h1>Number counter</h1>
+            <br>
+            <form id="myform" >
+                <input type="text" id="user">
+                <br>
+                <br>
+                <input type="submit" id="button" value="submit">
+            </form>
+            <br>
+            <h3>counting</h3>
+        </div>
+    </div>
+</body>
+<script>
+    let myform = document.querySelector("#myform")
+    let button=document.querySelector("#querySelector")
+    myform.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let number = parseInt(document.querySelector("#user").value);
+        let reverse = 0;
+        while (number != 0) {
+            let r = number % 10
+            reverse = reverse * 10 + r
+            number = parseInt(number / 10)
+        }
+        console.log(reverse)
+        let ans = document.querySelector("h3")
+        ans.innerHTML=reverse;
+    })
+</script>
+
+</html>
