@@ -6,101 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Number Guessing Game</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../styles.css">
-    <style>
-        html {
-  font-family: sans-serif;
-}
-
-body {
-  width: 300px;
-  max-width: 750px;
-  min-width: 480px;
-  margin: 0 auto;
-  background-color: #212121;
-}
-
-.lastResult {
-  color: white;
-  padding: 7px;
-}
-
-.guesses {
-  color: white;
-  padding: 7px;
-}
-
-button {
-  background-color: #141414;
-  color: #fff;
-  width: 250px;
-  height: 50px;
-  border-radius: 25px;
-  font-size: 30px;
-  border-style: none;
-  margin-top: 30px;
-  /* margin-left: 50px; */
-}
-
-#subt {
-  background-color: #161616;
-  color: #ffffff;
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  font-size: 20px;
-  border-style: none;
-  margin-top: 50px;
-  /* margin-left: 75px; */
-}
-
-#guessField {
-  color: #000;
-  width: 250px;
-  height: 50px;
-  font-size: 30px;
-  border-style: none;
-  margin-top: 25px;
-
-  /* margin-left: 50px; */
-  border: 5px solid #6c6d6d;
-  text-align: center;
-}
-
-#guess {
-  font-size: 55px;
-  /* margin-left: 90px; */
-  margin-top: 120px;
-  color: #fff;
-}
-
-.guesses {
-  background-color: #7a7a7a;
-}
-
-#wrapper {
-  box-sizing: border-box;
-  text-align: center;
-  width: 50vw;
-  height: 50vh;
-  background-color: #474747;
-  color: #fff;
-  font-size: 25px;
-}
-
-h1 {
-  background-color: #161616;
-
-  color: #fff;
-  text-align: center;
-}
-
-p {
-  font-size: 16px;
-  text-align: center;
-}
-
-    </style>
+    <!-- <link rel="stylesheet" href="../styles.css"> -->
 </head>
 <body style="background-color:#212121; color:#fff;">
   <nav>
@@ -127,8 +33,94 @@ p {
             <p class="lowOrHi"></p>
         </div>
     </div>
-    <script>
-        
-    </script>
+    <script src="chaiaurcode.js"></script>
 </body>
+<script>
+  let random=parseInt((Math.random())*100+1)
+  let submit = document.querySelector("#subt")
+  let userIn=document.querySelector("#guessField")
+  let pre=document.querySelector(".guesses")
+  let remain=document.querySelector(".lastResult")
+  let low=document.querySelector(".lowOrHi")
+  let myform=document.querySelector(".form")
+  let startOver=document.querySelector(".resultParas")
+
+  let p=document.createElement("p");
+  let prevGuesses=[]
+  let numGues=1
+  let playGame=true
+  
+  if(playGame){
+    submit.addEventListener('click',function(e){
+      e.preventDefault();
+      let guess=parseInt(userIn.value);
+      validateGuess(guess)
+    })
+  }
+
+  function validateGuess(guess){
+    if(isNaN(guess)){
+      alert("please enter number")
+    }else if(guess<1){
+      alert("please enter number greater than 1")
+    }else if(guess>100){
+      alert("please enter number less than 100")
+    }else{
+      prevGuesses.push(guess)
+      if(numGues===11){
+        displayGuess(guess)
+        displayMessage(`game over , Randome numebr was ${random} `)
+        endGame();
+      }else{
+        displayGuess(guess)
+        checkGuess(guess)
+      }
+    }
+  }
+  function checkGuess(guess){
+    if(guess===random){
+      displayMessage("you guessed it right")
+      endGame()
+    }else if(guess<random){
+      displayMessage("number is TOOO low")
+
+    }else if(guess>random){
+      displayMessage("number is TOOO high")
+    }
+  }
+  function displayGuess(guess){
+    userIn.value=''
+    pre.innerHTML+=`${guess} ,`
+    numGues++;
+    remain.innerHTML=`${11-numGues}`
+  }
+  function displayMessage(message){
+    low.innerHTML=`<h2>${message}</h2>`;
+  }
+  function newGame(){
+    let button=document.querySelector("#newGame")
+    button.addEventListener("click",function(e){
+      random=parseInt((Math.random())*100+1)
+      prevGuesses=[]
+      numGues=1
+      pre.innerHTML=''
+      remain.innerHTML=`${11-numGues}`;
+      userIn.removeAttribute('disabled');
+      startOver.removeChild(p)
+      playGame=true;
+      
+    });
+    
+  }
+  function endGame(){
+    userIn.value=' '
+    userIn.setAttribute("disabled", '')
+    p.classList.add("button")
+    p.innerHTML=`<h2 id="newGame"> start new game</h2>`;
+    playGame=false
+    startOver.appendChild(p);
+    newGame()
+  }
+</script>
+
 </html>
