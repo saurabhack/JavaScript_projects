@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .navbar{
+            width: 100vw;
+            height: 10vh;
+            /* border:2px solid black; */
+            display: flex;
+            box-shadow: 2px 2px 5px black;
+            position: sticky;
+            
+            
+        }
+        .form{
+            width: 100vw;
+            height: 90vh;
+            /* border: 2px solid black; */
+            margin-top: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #product{
+            height: 50px;
+            width: 400px;
+        }
+        #price{
+            height: 50px;
+            width: 400px;
+        }
+        
+        #submit{
+            height: 50px;
+            width: 400px;
+            background-color: aqua;
+        }
+        .parent{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            
+        }
+        .parent a{
+            text-decoration: none;
+            color: black;
+        }
+        .content{
+            width:100vw;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            /* border: 2px solid black; */
+        }
+        .box{
+            width: 50%;
+            height: 25%;
+            background-color: aquamarine;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            position: relative;
+            bottom: -20px;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="parent">
+        <a href=""><p class="dash">home</p></a>
+        <a href="sample.html"><p class="dash">add bill</p></a>
+        <a href="bill.html"><p class="dash">bill</p></a>
+    </div>
+    </div>
+    <div class="form">
+        <form id="myform">
+            <input type="text" id="product" placeholder="enter your product">
+            <br>
+            <br>
+            <input type="text" id="price" placeholder="enter your products price">
+            <br>
+            <br>
+            <input type="submit" value="submit" id="submit">
+        </form>
+    </div>
+    <div class="content">
+        <div class="box">
+            
+        </div>
+    </div>
+   
+</body>
+<script src="sample.js"></script>
+</html>
