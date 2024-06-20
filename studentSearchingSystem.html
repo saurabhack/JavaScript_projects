@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .navbar{
+            height: 10vh;
+            width:100vw;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .middle{
+            height: 60vh;
+            width: 100vw;
+            /* background-color: green; */
+        }
+/*         
+        .form{
+            height: 50%;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }  */
+        button{
+            width: 20%;
+        }
+         #name{
+            height: 25px;
+            width: 20%;
+         }
+         #button{
+            height: 25px;
+            width: 15%;
+         }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>students searching system</h2>
+    </div>
+    <br>
+    <div class="middle">
+        <div class="form">
+        <form id="data">
+            <input type="text" id="name" placeholder="enter student name">
+            <input type="submit" value="search" id="button">
+        </form>
+    </div>
+        <br>
+        <div id="result">
+            <h2 id="error" style="color:red;"></h2>
+            <b id="sname"></b>
+            <p id="sroll"></p>
+            <p id="sgrade"></p>
+        </div>
+    </div>
+</body>
+<script>
+function createDict(name,roll,grade){
+    this.name=name
+    this.roll=roll
+    this.grade=grade
+}
+let saurabh= new createDict("saurabh",12,"A")
+let sameer=new createDict("sameer",14,"B")
+let akash=new createDict("akash",16,"B")
+let viraj=new createDict("viraj",15,"B")
+
+let arr=[saurabh,sameer,akash,viraj]
+let data=document.querySelector("#data")
+data.addEventListener("submit",function(e){
+    e.preventDefault();
+    let name=document.querySelector("#name").value;
+    let counter=0;
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].name==name){
+         let names=document.querySelector("#sname")
+         let roll=document.querySelector("#sroll")
+         let grade=document.querySelector("#sgrade") 
+         names.innerHTML=arr[i].name
+         roll.innerHTML=arr[i].roll
+         grade.innerHTML=arr[i].grade
+         counter=1
+        }
+    }
+    if(counter==0){
+        let error=document.querySelector("#error")
+        error.innerHTML="student does not exists"
+    }
+})
+</script>
+</html>
