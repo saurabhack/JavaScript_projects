@@ -12,16 +12,14 @@
 </body>
 <script>
     function counter(){
-        let i=0;
-        while(i<10){
-         return   i++;
-        }
+        let time=new Date();
+        return time.toLocaleTimeString();
     }
     let id
     const startCounting=function(){
         id=setInterval(counting,1000)
         function counting(){
-            document.querySelector("h1").innerHTML=counter();
+            document.querySelector("h1").innerText=counter();
             console.log(counter())
         
         }
